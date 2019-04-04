@@ -35,6 +35,7 @@ namespace WindowsFormsApp11
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             index++;
+
             Main.SelectedIndex = index;
         }
 
