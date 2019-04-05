@@ -45,11 +45,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminForm.Designer.cs">
+      <DependentUpon>AdminForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Market.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Market.Designer.cs">
+      <DependentUpon>Market.cs</DependentUpon>
     </Compile>
     <Compile Include="Order.cs">
       <SubType>Form</SubType>
@@ -57,10 +75,36 @@
     <Compile Include="Order.Designer.cs">
       <DependentUpon>Order.cs</DependentUpon>
     </Compile>
+    <Compile Include="Page.cs" />
+    <Compile Include="PagePart.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Test3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test3.Designer.cs">
+      <DependentUpon>Test3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Test2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test2.Designer.cs">
+      <DependentUpon>Test2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Test1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Test1.Designer.cs">
+      <DependentUpon>Test1.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AdminForm.resx">
+      <DependentUpon>AdminForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Order.resx">
       <DependentUpon>Order.cs</DependentUpon>
@@ -75,6 +119,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Test3.resx">
+      <DependentUpon>Test3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test2.resx">
+      <DependentUpon>Test2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Test1.resx">
+      <DependentUpon>Test1.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

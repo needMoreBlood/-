@@ -73,5 +73,9 @@ namespace WindowsFormsApp11
             index = index - 3;
             Main.SelectedIndex = index;
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+        }
     }
 }
