@@ -12,131 +12,295 @@ namespace WindowsFormsApp11
 {
     public partial class Market : Form
     {
-        private PagePart[][] pages;
+        private Page[] Pages { get; set; }
         private int currentPage;
 
         public Market()
         {
             InitializeComponent();
             InitPages();
+            UpdatePage();
             this.Load += ResizeElements;
             this.Resize += ResizeElements;
-            var lenght = pages[0].Length;
-            //for (var i = 0; i < lenght; i++)
-            //{
-            //    Controls.Add(pages[0][lenght - i - 1].PictureBox);
-            //}
-            foreach (var pagePart in pages[0])
-            {
-                Controls.Add(pagePart.GroupBox);
-                Controls.Add(pagePart.Label);
-            }
         }
 
         void InitPages()
         {
-            pages = new[]
+            Pages = new[]
             { 
-                new[]
+                new Page(
+                    new[]
+                    {
+                        new PicturePagePart(Properties.Resources.пилоны, GoToPolesPage, "Пилоны"),
+                        new PicturePagePart(Properties.Resources.кольца, GoToRingsPage, "Кольца"),
+                        new PicturePagePart(Properties.Resources.Полотнаа, GoToCanvasesPage, "Полотона")
+                    },
+                    new Label
+                    {
+                        AutoSize = true,
+                        BackColor = System.Drawing.Color.White,
+                        Font = new System.Drawing.Font("Mistral", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204))),
+                        ForeColor = System.Drawing.Color.CadetBlue,
+                        Location = new Point(10,10)
+                        
+                    }
+                ),
+                new Page(
+            new[]
+                    {
+                        new PicturePagePart(Properties.Resources.пилон_на_подиуме, GoToOrderTablePolePage, "На подиуме"),
+                        new PicturePagePart(Properties.Resources.пилон_обычный, GoToOrderPolePage, "Классический"),
+                        new PicturePagePart(Properties.Resources.подвесной_пилон, GoToOrderChinesePolePage, "Подвесной")
+                    },
+                    backButton: new PictureBox
+                    {
+                        Image = Properties.Resources.back,
+                        BackColor = Color.White,
+                        Height = 30,
+                        Width = 30,
+                        SizeMode = PictureBoxSizeMode.Zoom,
+                        Location = new Point(10,10)
+                    },
+                    action: GoToMainPage
+                    
+                ),
+                new Page(
+            new[]
+                    {
+                        new PicturePagePart(Properties.Resources.кольцо_без_перекладины, GoToOrderRingPage, "Без перекладины"),
+                        new PicturePagePart(Properties.Resources.кольцо_с_перекладиной, GoToOrderRingWithPage, "С перекладиной"),
+                    },
+            backButton: new PictureBox
+            {
+                Image = Properties.Resources.back,
+                BackColor = Color.White,
+                Height = 30,
+                Width = 30,
+                SizeMode = PictureBoxSizeMode.Zoom,
+                Location = new Point(10,10)
+            },
+            action: GoToMainPage
+                ),
+                new Page(new[]
+                    {
+                        new PicturePagePart(Properties.Resources.полотна, GoToOrderCanvasesPage, "Полотна"),
+                        new PicturePagePart(Properties.Resources.гамак, GoToOrderHammockPage, "Гамак"),
+                    },
+                    backButton: new PictureBox
+                    {
+                        Image = Properties.Resources.back,
+                        BackColor = Color.White,
+                        Height = 30,
+                        Width = 30,
+                        SizeMode = PictureBoxSizeMode.Zoom,
+                        Location = new Point(10,10)
+                    },
+                    action: GoToMainPage
+                ),
+                new Page(
+                new PagePart[]
+                    {
+                        new PicturePagePart(Properties.Resources.пилон_на_подиуме, GoToPolesPage, ""),
+                        new OrderPagePart("Пилон на подиуме", "Описание:", new string[0]), 
+                    },
+                backButton: new PictureBox
                 {
-                    new PagePart(Properties.Resources.пилоны, GoToPilonsPage, "Пилоны"),
-                    new PagePart(Properties.Resources.кольца, GoToRingsPage, "Кольца"),
-                    new PagePart(Properties.Resources.Полотнаа, GoToCanvasesPage, "Полотна")
+                    Image = Properties.Resources.back,
+                    BackColor = Color.White,
+                    Height = 30,
+                    Width = 30,
+                    SizeMode = PictureBoxSizeMode.Zoom,
+                    Location = new Point(10,10)
                 },
-                new[]
+                action: GoToPolesPage
+                ),
+                new Page(
+                new PagePart[]
+                    {
+                        new PicturePagePart(Properties.Resources.пилон_обычный, GoToPolesPage, ""),
+                        new OrderPagePart("Пилон", "Описание:", new string[0]),
+                    },
+                backButton: new PictureBox
                 {
-                    new PagePart(Properties.Resources.пилон_обычный, GoToPilonsPage, "Обычный"),
-                    new PagePart(Properties.Resources.подвесной_пилон, GoToRingsPage, "подвисной"),
-                    new PagePart(Properties.Resources.пилон_на_подиуме, GoToCanvasesPage, "На подиуме")
+                    Image = Properties.Resources.back,
+                    BackColor = Color.White,
+                    Height = 30,
+                    Width = 30,
+                    SizeMode = PictureBoxSizeMode.Zoom,
+                    Location = new Point(10,10)
                 },
-                new[]
+                action: GoToPolesPage
+                ),
+                new Page(
+                new PagePart[]
+                    {
+                        new PicturePagePart(Properties.Resources.подвесной_пилон, GoToPolesPage, ""),
+                        new OrderPagePart("Подвесной пилон", "Описание:", new string[0]),
+                    },
+                backButton: new PictureBox
                 {
-                    new PagePart(Properties.Resources.кольцо_без_перекладины, GoToPilonsPage, "Без перекладины"),
-                    new PagePart(Properties.Resources.кольцо_с_перекладиной, GoToRingsPage, "С перекладиной")
+                    Image = Properties.Resources.back,
+                    BackColor = Color.White,
+                    Height = 30,
+                    Width = 30,
+                    SizeMode = PictureBoxSizeMode.Zoom,
+                    Location = new Point(10,10)
                 },
-                new[]
+                action: GoToPolesPage
+                ),
+                new Page(
+                new PagePart[]
+                    {
+                        new PicturePagePart(Properties.Resources.кольцо_без_перекладины, GoToPolesPage, ""),
+                        new OrderPagePart("Кольцо", "Описание:", new string[0]),
+                    },
+                backButton: new PictureBox
                 {
-                    new PagePart(Properties.Resources.полотна, GoToPilonsPage, "Полотна"),
-                    new PagePart(Properties.Resources.гамак, GoToRingsPage, "Гамак")
-                }
+                    Image = Properties.Resources.back,
+                    BackColor = Color.White,
+                    Height = 30,
+                    Width = 30,
+                    SizeMode = PictureBoxSizeMode.Zoom,
+                    Location = new Point(10,10)
+                },
+                action: GoToRingsPage
+                ),
+                new Page(
+                new PagePart[]
+                    {
+                        new PicturePagePart(Properties.Resources.кольцо_с_перекладиной, GoToPolesPage, ""),
+                        new OrderPagePart("Кольцо с перекладиной", "Описание:", new string[0]),
+                    },
+                backButton: new PictureBox
+                {
+                    Image = Properties.Resources.back,
+                    BackColor = Color.White,
+                    Height = 30,
+                    Width = 30,
+                    SizeMode = PictureBoxSizeMode.Zoom,
+                    Location = new Point(10,10)
+                },
+                action: GoToRingsPage
+                ),
+                new Page(
+                    new PagePart[]
+                    {
+                        new PicturePagePart(Properties.Resources.полотна, GoToPolesPage, ""),
+                        new OrderPagePart("Полотна", "Описание:", new string[0]),
+                    },
+                    backButton: new PictureBox
+                    {
+                        Image = Properties.Resources.back,
+                        BackColor = Color.White,
+                        Height = 30,
+                        Width = 30,
+                        SizeMode = PictureBoxSizeMode.Zoom,
+                        Location = new Point(10,10)
+                    },
+                    action: GoToCanvasesPage
+                ),
+                new Page(
+                    new PagePart[]
+                    {
+                        new PicturePagePart(Properties.Resources.гамак, GoToPolesPage, ""),
+                        new OrderPagePart("Гамак", "Описание:", new string[0]),
+                    },
+                    backButton: new PictureBox
+                    {
+                        Image = Properties.Resources.back,
+                        BackColor = Color.White,
+                        Height = 30,
+                        Width = 30,
+                        SizeMode = PictureBoxSizeMode.Zoom,
+                        Location = new Point(10,10)
+                    },
+                    action: GoToCanvasesPage
+                )
             };
         }
 
-        private void Update()
+        private void UpdatePage()
         {
             Controls.Clear();
-            foreach (var pagePart in pages[currentPage])
+            if(Pages[currentPage].BackButton != null)
+                Controls.Add(Pages[currentPage].BackButton);
+            if (Pages[currentPage].MainLabel != null)
+                Controls.Add(Pages[currentPage].MainLabel);
+            foreach (var pagePart in Pages[currentPage].PageParts)
             {
                 Controls.Add(pagePart.GroupBox);
-                Controls.Add(pagePart.Label);
             }
-            re();
+            Pages[currentPage].Resize(Width - 13, Height - 38);
         }
 
         private void ResizeElements(object sender, EventArgs e)
         {
-            Control control = (Control)sender;
-            var width = control.Width / pages[currentPage].Length;
-            for (var i = 0; i < pages[currentPage].Length; i++)
-            {
-                pages[currentPage][i].GroupBox.Width = width;
-                pages[currentPage][i].GroupBox.Height = control.Height;
-                pages[currentPage][i].GroupBox.Location = new Point(width*i,0);
-                ResizeElements(pages[currentPage][i].PictureBox,width / 2,control.Height/2,width,control.Height);
-            }
-        }
-
-        private void re()
-        {
-            var control = this;
-            var width = control.Width / pages[currentPage].Length;
-            for (var i = 0; i < pages[currentPage].Length; i++)
-            {
-                pages[currentPage][i].GroupBox.Width = width;
-                pages[currentPage][i].GroupBox.Height = control.Height;
-                pages[currentPage][i].GroupBox.Location = new Point(width * i, 0);
-                ResizeElements(pages[currentPage][i].PictureBox, width / 2, control.Height / 2, width, control.Height);
-            }
-        }
-
-        private void ResizeElements(PictureBox pictureBox, int centreX, int centreY, int width, int height)
-        {
-            var ratio = (double) pictureBox.Image.Width / pictureBox.Image.Height;
-            if (ratio < (double)width / height)
-            {
-                pictureBox.Width = width;
-                pictureBox.Height = (int)(width / ratio);
-            }
-            else
-            {
-                pictureBox.Height = height;
-                pictureBox.Width = (int) (height * ratio);
-            }
-            pictureBox.Location = new Point(centreX - pictureBox.Width/2,centreY - pictureBox.Height/2);
+            Pages[currentPage].Resize(Width - 13 , Height - 38);
         }
 
         private void GoToMainPage(object sender, EventArgs e)
         {
             currentPage = 0;
-            Update();
+            UpdatePage();
         }
 
-        private void GoToPilonsPage(object sender, EventArgs e)
+        private void GoToPolesPage(object sender, EventArgs e)
         {
             currentPage = 1;
-            Update();
+            UpdatePage();
         }
 
         private void GoToRingsPage(object sender, EventArgs e)
         {
             currentPage = 2;
-            Update();
+            UpdatePage();
         }
 
         private void GoToCanvasesPage(object sender, EventArgs e)
         {
             currentPage = 3;
-            Update();
+            UpdatePage();
         }
+
+        private void GoToOrderTablePolePage(object sender, EventArgs e)
+        {
+            currentPage = 4;
+            UpdatePage();
+        }
+        private void GoToOrderPolePage(object sender, EventArgs e)
+        {
+            currentPage = 5;
+            UpdatePage();
+        }
+        private void GoToOrderChinesePolePage(object sender, EventArgs e)
+        {
+            currentPage = 6;
+            UpdatePage();
+        }
+
+        private void GoToOrderRingPage(object sender, EventArgs e)
+        {
+            currentPage = 7;
+            UpdatePage();
+        }
+
+        private void GoToOrderRingWithPage(object sender, EventArgs e)
+        {
+            currentPage = 8;
+            UpdatePage();
+        }
+
+        private void GoToOrderCanvasesPage(object sender, EventArgs e)
+        {
+            currentPage = 9;
+            UpdatePage();
+        }
+
+        private void GoToOrderHammockPage(object sender, EventArgs e)
+        {
+            currentPage = 10;
+            UpdatePage();
+        }
+
     }
 }

@@ -158,7 +158,7 @@
             this.label3.TabIndex = 18;
             this.label3.Text = "Полотна";
             // 
-            // Test
+            // Test1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -172,7 +172,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
-            this.Name = "Test";
+            this.Name = "Test1";
             this.Text = "Test";
             this.Load += new System.EventHandler(this.Test_Load);
             this.Resize += new System.EventHandler(this.Form1_Resize);

@@ -16,7 +16,7 @@ namespace WindowsFormsApp11
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Test3());
+            Application.Run(new Market());
         }
     }
 }
