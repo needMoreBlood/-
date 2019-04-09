@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Windows.Forms;
 
 
-namespace WindowsFormsApp11
+namespace Interfaces
 {
     public class PicturePagePart : PagePart
     {
@@ -22,13 +22,16 @@ namespace WindowsFormsApp11
                 Font = new Font("Minion Pro", 21.75F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(204))),
                 ForeColor = Color.CadetBlue
             };
-            TitleLabel.Click += new EventHandler(action);
             PictureBox = new PictureBox
             {
                 Image = image,
                 SizeMode = PictureBoxSizeMode.Zoom
             };
-            PictureBox.Click += new System.EventHandler(action);
+            if (action != null)
+            {
+                TitleLabel.Click += new EventHandler(action);
+                PictureBox.Click += new System.EventHandler(action);
+            }
             GroupBox = new GroupBox();
             GroupBox.Controls.Add(TitleLabel);
             GroupBox.Controls.Add(PictureBox);

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-namespace WindowsFormsApp11
+namespace Interfaces
 {
     public partial class Form1 : Form
     {

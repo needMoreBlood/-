@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp11
+﻿namespace Interfaces
 {
     partial class Form1
     {
@@ -303,7 +303,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::WindowsFormsApp11.Properties.Resources.пилоны;
+            this.pictureBox2.Image = global::Interfaces.Properties.Resources.пилоны;
             this.pictureBox2.Location = new System.Drawing.Point(0, 0);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(264, 458);
@@ -313,7 +313,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::WindowsFormsApp11.Properties.Resources.кольца;
+            this.pictureBox1.Image = global::Interfaces.Properties.Resources.кольца;
             this.pictureBox1.Location = new System.Drawing.Point(259, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(305, 458);
@@ -324,7 +324,7 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = global::WindowsFormsApp11.Properties.Resources.Полотнаа;
+            this.pictureBox3.Image = global::Interfaces.Properties.Resources.Полотнаа;
             this.pictureBox3.Location = new System.Drawing.Point(552, 0);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(223, 419);
@@ -334,7 +334,7 @@
             // 
             // pictureBox6
             // 
-            this.pictureBox6.Image = global::WindowsFormsApp11.Properties.Resources.пилон_на_подиуме;
+            this.pictureBox6.Image = global::Interfaces.Properties.Resources.пилон_на_подиуме;
             this.pictureBox6.Location = new System.Drawing.Point(559, 110);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(180, 181);
@@ -344,7 +344,7 @@
             // 
             // pictureBox5
             // 
-            this.pictureBox5.Image = global::WindowsFormsApp11.Properties.Resources.подвесной_пилон;
+            this.pictureBox5.Image = global::Interfaces.Properties.Resources.подвесной_пилон;
             this.pictureBox5.Location = new System.Drawing.Point(310, 110);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(180, 181);
@@ -354,7 +354,7 @@
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Image = global::WindowsFormsApp11.Properties.Resources.пилон_обычный;
+            this.pictureBox4.Image = global::Interfaces.Properties.Resources.пилон_обычный;
             this.pictureBox4.Location = new System.Drawing.Point(43, 110);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(199, 181);
@@ -365,7 +365,7 @@
             // 
             // pictureBox8
             // 
-            this.pictureBox8.Image = global::WindowsFormsApp11.Properties.Resources.кольцо_с_перекладиной;
+            this.pictureBox8.Image = global::Interfaces.Properties.Resources.кольцо_с_перекладиной;
             this.pictureBox8.Location = new System.Drawing.Point(463, 80);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(224, 202);
@@ -375,7 +375,7 @@
             // 
             // pictureBox7
             // 
-            this.pictureBox7.Image = global::WindowsFormsApp11.Properties.Resources.кольцо_без_перекладины;
+            this.pictureBox7.Image = global::Interfaces.Properties.Resources.кольцо_без_перекладины;
             this.pictureBox7.Location = new System.Drawing.Point(111, 80);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(224, 202);
@@ -385,7 +385,7 @@
             // 
             // pictureBox10
             // 
-            this.pictureBox10.Image = global::WindowsFormsApp11.Properties.Resources.гамак;
+            this.pictureBox10.Image = global::Interfaces.Properties.Resources.гамак;
             this.pictureBox10.Location = new System.Drawing.Point(469, 48);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(225, 201);
@@ -395,7 +395,7 @@
             // 
             // pictureBox9
             // 
-            this.pictureBox9.Image = global::WindowsFormsApp11.Properties.Resources.полотна;
+            this.pictureBox9.Image = global::Interfaces.Properties.Resources.полотна;
             this.pictureBox9.Location = new System.Drawing.Point(64, 48);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(225, 201);

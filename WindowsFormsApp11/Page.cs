@@ -6,23 +6,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp11
+namespace Interfaces
 {
     public class Page
     {
-        public PagePart[] PageParts { get; set; }
-        public Label MainLabel { get; set; }
-        public PictureBox BackButton { get; set; }
+        public PagePart[] PageParts { get; private set; }
+        public Label MainLabel { get; private set; }
+        public BackButton BackButton { get; private set; }
 
-        public Page(PagePart[] pageParts, Label label = null, PictureBox backButton = null, Action<object, EventArgs> action = null)
+        public Page(PagePart[] pageParts, Label label = null, BackButton backButton = null)
         {
             PageParts = pageParts;
             MainLabel = label;
-            if (backButton != null)
-            {
-                BackButton = backButton;
-                BackButton.Click += new EventHandler(action);
-            }
+            BackButton = backButton;
         }
 
         public void Resize(int width, int height)

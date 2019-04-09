@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace WindowsFormsApp11
+namespace Interfaces
 {
     partial class Market
     {

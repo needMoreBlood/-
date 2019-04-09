@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp11
+﻿namespace Interfaces
 {
     partial class Test3
     {
@@ -57,7 +57,7 @@
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.Image = global::WindowsFormsApp11.Properties.Resources.пилон_на_подиуме;
+            this.pictureBox1.Image = global::Interfaces.Properties.Resources.пилон_на_подиуме;
             this.pictureBox1.Location = new System.Drawing.Point(-83, -31);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(524, 465);

@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp11
+﻿namespace Interfaces
 {
     partial class AdminForm
     {

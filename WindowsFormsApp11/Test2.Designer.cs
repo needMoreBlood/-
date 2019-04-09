@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp11
+﻿namespace Interfaces
 {
     partial class Test2
     {
@@ -50,7 +50,7 @@
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.Image = global::WindowsFormsApp11.Properties.Resources.пилон_на_подиуме;
+            this.pictureBox1.Image = global::Interfaces.Properties.Resources.пилон_на_подиуме;
             this.pictureBox1.Location = new System.Drawing.Point(-78, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(360, 410);
@@ -62,9 +62,9 @@
             // pictureBox2
             // 
             this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.pictureBox2.BackgroundImage = global::WindowsFormsApp11.Properties.Resources.пилон_на_подиуме;
+            this.pictureBox2.BackgroundImage = global::Interfaces.Properties.Resources.пилон_на_подиуме;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.Image = global::WindowsFormsApp11.Properties.Resources.пилон_обычный;
+            this.pictureBox2.Image = global::Interfaces.Properties.Resources.пилон_обычный;
             this.pictureBox2.Location = new System.Drawing.Point(252, 0);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(343, 410);
@@ -76,7 +76,7 @@
             // 
             this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.pictureBox3.BackColor = System.Drawing.Color.White;
-            this.pictureBox3.Image = global::WindowsFormsApp11.Properties.Resources.подвесной_пилон;
+            this.pictureBox3.Image = global::Interfaces.Properties.Resources.подвесной_пилон;
             this.pictureBox3.Location = new System.Drawing.Point(595, 0);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(300, 410);
