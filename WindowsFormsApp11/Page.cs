@@ -23,23 +23,37 @@ namespace Interfaces
 
         public void Resize(int width, int height)
         {
+            var borderSize = 1;
+            width -= borderSize;
             var size = width / PageParts.Length;
-            for(var i = 0; i < PageParts.Length; i++)
+            for(var i = 0; i < PageParts.Length - 1; i++)
             {
                 var part = PageParts[i]; 
-                part.GroupBox.Location = new Point(size*i,0);
-                part.GroupBox.Width = size;
-                part.GroupBox.Height = height;
-                if (part is PicturePagePart)
+                part.GroupBox.Location = new Point((size)*i + borderSize, borderSize);
+                part.GroupBox.Width = size - borderSize;
+                part.GroupBox.Height = height - 2* borderSize;
+                switch (part)
                 {
-                    var picturePart = (PicturePagePart) part;
-                    picturePart.Resize(size,height);
+                    case PicturePagePart picturePart:
+                        picturePart.Resize(picturePart.GroupBox.Width, picturePart.GroupBox.Height);
+                        break;
+                    case OrderPagePart orderPart:
+                        orderPart.Resize(orderPart.GroupBox.Width, orderPart.GroupBox.Height);
+                        break;
                 }
-                if(part is OrderPagePart)
-                {
-                    var orderPart = (OrderPagePart)part;
-                    orderPart.Resize(size, height);
-                }
+            }
+            var lastPart = PageParts[PageParts.Length - 1];
+            lastPart.GroupBox.Location = new Point(size * (PageParts.Length - 1) + borderSize, borderSize);
+            lastPart.GroupBox.Width = width - size * (PageParts.Length - 1) - borderSize;
+            lastPart.GroupBox.Height = height - 2 * borderSize;
+            switch (lastPart)
+            {
+                case PicturePagePart picturePart1:
+                    picturePart1.Resize(picturePart1.GroupBox.Width, picturePart1.GroupBox.Height);
+                    break;
+                case OrderPagePart orderPart1:
+                    orderPart1.Resize(orderPart1.GroupBox.Width, orderPart1.GroupBox.Height);
+                    break;
             }
         }
     }

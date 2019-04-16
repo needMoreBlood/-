@@ -29,44 +29,22 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.LoginBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.PasswordBox = new System.Windows.Forms.TextBox();
+            this.CancelButton = new System.Windows.Forms.PictureBox();
+            this.AcceptButton = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.CancelButton)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AcceptButton)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox6
+            // LoginBox
             // 
-            this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(95, 136);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(40, 40);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox6.TabIndex = 17;
-            this.pictureBox6.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(175, 136);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(40, 40);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 18;
-            this.pictureBox1.TabStop = false;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(75, 40);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(170, 20);
-            this.textBox1.TabIndex = 21;
+            this.LoginBox.Location = new System.Drawing.Point(75, 40);
+            this.LoginBox.Name = "LoginBox";
+            this.LoginBox.Size = new System.Drawing.Size(170, 20);
+            this.LoginBox.TabIndex = 21;
             // 
             // label1
             // 
@@ -86,12 +64,34 @@
             this.label2.TabIndex = 24;
             this.label2.Text = "Пароль";
             // 
-            // textBox2
+            // PasswordBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(75, 97);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(170, 20);
-            this.textBox2.TabIndex = 23;
+            this.PasswordBox.Location = new System.Drawing.Point(75, 97);
+            this.PasswordBox.Name = "PasswordBox";
+            this.PasswordBox.Size = new System.Drawing.Size(170, 20);
+            this.PasswordBox.TabIndex = 23;
+            // 
+            // CancelButton
+            // 
+            this.CancelButton.BackColor = System.Drawing.Color.Transparent;
+            this.CancelButton.Image = ((System.Drawing.Image)(resources.GetObject("CancelButton.Image")));
+            this.CancelButton.Location = new System.Drawing.Point(175, 136);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(40, 40);
+            this.CancelButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.CancelButton.TabIndex = 18;
+            this.CancelButton.TabStop = false;
+            // 
+            // AcceptButton
+            // 
+            this.AcceptButton.BackColor = System.Drawing.Color.Transparent;
+            this.AcceptButton.Image = ((System.Drawing.Image)(resources.GetObject("AcceptButton.Image")));
+            this.AcceptButton.Location = new System.Drawing.Point(95, 136);
+            this.AcceptButton.Name = "AcceptButton";
+            this.AcceptButton.Size = new System.Drawing.Size(40, 40);
+            this.AcceptButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.AcceptButton.TabIndex = 17;
+            this.AcceptButton.TabStop = false;
             // 
             // Login
             // 
@@ -99,15 +99,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(314, 188);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.PasswordBox);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.pictureBox6);
+            this.Controls.Add(this.LoginBox);
+            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.AcceptButton);
             this.Name = "Login";
             this.Text = "Login";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CancelButton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AcceptButton)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -115,11 +115,11 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.PictureBox AcceptButton;
+        private System.Windows.Forms.PictureBox CancelButton;
+        private System.Windows.Forms.TextBox LoginBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox PasswordBox;
     }
 }

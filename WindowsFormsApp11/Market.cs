@@ -15,11 +15,14 @@ namespace Interfaces
         private Page[] Pages { get; set; }
         private Dictionary<string, Page> Pages1 { get; set; }
         private int currentPage;
+        private AdminButton adminButton;
 
         public Market()
         {
             InitializeComponent();
+            BackColor = Color.Black;
             InitPages();
+            adminButton = new AdminButton(ClientSize.Width);
             UpdatePage();
             Load += ResizeElements;
             Resize += ResizeElements;
@@ -75,7 +78,7 @@ namespace Interfaces
                 new PagePart[]
                     {
                         new PicturePagePart(Properties.Resources.пилон_на_подиуме, null, ""),
-                        new OrderPagePart("Пилон на подиуме", "Описание:", new string[0]), 
+                        new OrderPagePart("Пилон на подиуме", "Пилон разборный на подиуме\n2 режима- динамика и статика\nматериал - ...\nцвет - стандартный\nподиум разборный (6 сегментов)", new string[] {"ФИО", "Телефон", "E-mail", "Адрес","Длина", "Диаметр"}), 
                     },
                 backButton:  new BackButton(GoToPageAction(1))
                 ),
@@ -83,7 +86,7 @@ namespace Interfaces
                 new PagePart[]
                     {
                         new PicturePagePart(Properties.Resources.пилон_обычный, null, ""),
-                        new OrderPagePart("Пилон", "Описание:", new string[0]),
+                        new OrderPagePart("Пилон", "Описание:", new string[] {"ФИО"}),
                     },
                 backButton:  new BackButton(GoToPageAction(1))
                 ),
@@ -91,7 +94,7 @@ namespace Interfaces
                 new PagePart[]
                     {
                         new PicturePagePart(Properties.Resources.подвесной_пилон, null, ""),
-                        new OrderPagePart("Подвесной пилон", "Описание:", new string[0]),
+                        new OrderPagePart("Подвесной пилон", "Описание:", new string[] {"ФИО"}),
                     },
                 backButton:  new BackButton(GoToPageAction(1))
                 ),
@@ -99,7 +102,7 @@ namespace Interfaces
                 new PagePart[]
                     {
                         new PicturePagePart(Properties.Resources.кольцо_без_перекладины, null, ""),
-                        new OrderPagePart("Кольцо", "Описание:", new string[0]),
+                        new OrderPagePart("Кольцо", "Описание:", new string[] {"ФИО"}),
                     },
                 backButton:  new BackButton(GoToPageAction(2))
                 ),
@@ -107,7 +110,7 @@ namespace Interfaces
                 new PagePart[]
                     {
                         new PicturePagePart(Properties.Resources.кольцо_с_перекладиной, null, ""),
-                        new OrderPagePart("Кольцо с перекладиной", "Описание:", new string[0]),
+                        new OrderPagePart("Кольцо с перекладиной", "Описание:", new string[] {"ФИО"}),
                     },
                 backButton:  new BackButton(GoToPageAction(2))
                 ),
@@ -115,7 +118,7 @@ namespace Interfaces
                     new PagePart[]
                     {
                         new PicturePagePart(Properties.Resources.полотна, null, ""),
-                        new OrderPagePart("Полотна", "Описание:", new string[0]),
+                        new OrderPagePart("Полотна", "Описание:", new string[] {"ФИО"}),
                     },
                     backButton: new BackButton(GoToPageAction(3))
                 ),
@@ -123,7 +126,7 @@ namespace Interfaces
                     new PagePart[]
                     {
                         new PicturePagePart(Properties.Resources.гамак, null, ""),
-                        new OrderPagePart("Гамак", "Описание:", new string[0]),
+                        new OrderPagePart("Гамак", "Описание:", new string[] {"ФИО"}),
                     },
                     backButton:  new BackButton(GoToPageAction(3))
                 )
@@ -133,15 +136,14 @@ namespace Interfaces
         private void UpdatePage()
         {
             Controls.Clear();
+            Controls.Add(adminButton.Button);
             if(Pages[currentPage].BackButton != null)
                 Controls.Add(Pages[currentPage].BackButton.Button);
             if (Pages[currentPage].MainLabel != null)
                 Controls.Add(Pages[currentPage].MainLabel);
             foreach (var pagePart in Pages[currentPage].PageParts)
-            {
                 Controls.Add(pagePart.GroupBox);
-            }
-            Pages[currentPage].Resize(Width - 13, Height - 38);
+            Pages[currentPage].Resize(ClientSize.Width, ClientSize.Height);
         }
 
         private Action<object, EventArgs> GoToPageAction(int page)
@@ -155,7 +157,7 @@ namespace Interfaces
 
         private void ResizeElements(object sender, EventArgs e)
         {
-            Pages[currentPage].Resize(Width - 13 , Height - 38);
+            Pages[currentPage].Resize(ClientSize.Width, ClientSize.Height);
         }
     }
 }

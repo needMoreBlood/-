@@ -14,13 +14,13 @@ namespace Interfaces
         public PictureBox PictureBox { get; set; }
         public PicturePagePart(Bitmap image, Action<object, EventArgs> action, string labelText)
         {
-
             TitleLabel = new Label
             {
                 Text = labelText,
                 AutoSize = true,
                 Font = new Font("Minion Pro", 21.75F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(204))),
-                ForeColor = Color.CadetBlue
+                ForeColor = Color.CadetBlue,
+                BackColor = Color.White
             };
             PictureBox = new PictureBox
             {

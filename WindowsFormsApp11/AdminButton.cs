@@ -2,27 +2,33 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Windows.Forms;
+using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Interfaces
 {
-    public class BackButton
+    public class AdminButton
     {
         public PictureBox Button { get; private set; }
 
-        public BackButton(Action<object, EventArgs> backAction)
+        public AdminButton(int windowWith)
         {
             Button = new PictureBox
             {
-                Image = Properties.Resources.back,
+                Image = Properties.Resources.settings,
                 BackColor = Color.White,
                 Height = 35,
                 Width = 35,
                 SizeMode = PictureBoxSizeMode.Zoom,
-                Location = new Point(13, 13)
+                Location = new Point(windowWith - 48, 13),
+                Anchor = AnchorStyles.Right | AnchorStyles.Top
             };
-            Button.Click += new EventHandler(backAction);
+            Button.Click += (x, y) =>
+            {
+                var adminForm = new Login();
+                adminForm.ShowDialog();
+            };
         }
     }
 }

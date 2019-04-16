@@ -25,13 +25,6 @@ namespace Interfaces
             Main.SelectedIndex = index;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Form ff = new Order();
-            ff.Show();
-    
-        }
-
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             index++;
