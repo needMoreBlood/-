@@ -12,9 +12,13 @@ namespace Interfaces
 {
     public partial class AdminForm : Form
     {
-        public AdminForm()
+        public AdminForm(Data data)
         {
             InitializeComponent();
+            foreach (var order in data.Orders)
+            {
+                listBox1.Items.Add(order);
+            }
         }
     }
 }

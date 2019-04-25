@@ -36,8 +36,9 @@ namespace Interfaces
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.Color.Black;
+            this.ClientSize = new System.Drawing.Size(784, 462);
+            this.MinimumSize = new System.Drawing.Size(400, 500);
             this.Name = "Market";
             this.Text = "Market";
             this.ResumeLayout(false);

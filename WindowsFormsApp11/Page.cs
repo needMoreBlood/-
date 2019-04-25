@@ -21,6 +21,12 @@ namespace Interfaces
             BackButton = backButton;
         }
 
+
+        public void AddBackBatton(BackButton backButton)
+        {
+            BackButton = backButton;
+        }
+
         public void Resize(int width, int height)
         {
             var borderSize = 1;

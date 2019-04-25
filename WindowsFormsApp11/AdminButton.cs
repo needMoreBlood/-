@@ -12,7 +12,7 @@ namespace Interfaces
     {
         public PictureBox Button { get; private set; }
 
-        public AdminButton(int windowWith)
+        public AdminButton(Data data, int windowWith)
         {
             Button = new PictureBox
             {
@@ -26,7 +26,8 @@ namespace Interfaces
             };
             Button.Click += (x, y) =>
             {
-                var adminForm = new Login();
+                Data.LogData("Открыто окно администратора.");
+                var adminForm = new Login(data);
                 adminForm.ShowDialog();
             };
         }

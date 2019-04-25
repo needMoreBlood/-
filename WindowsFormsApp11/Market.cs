@@ -12,152 +12,166 @@ namespace Interfaces
 {
     public partial class Market : Form
     {
-        private Page[] Pages { get; set; }
-        private Dictionary<string, Page> Pages1 { get; set; }
-        private int currentPage;
+        private Page MainPage { get; set; }
+        private Page PilonsPage { get; set; }
+        private Page SilksPage { get; set; }
+        private Page RingsPage { get; set; }
+        private Page PilonWithStagePage { get; set; }
+        private Page PilonPage { get; set; }
+        private Page PilonChineesPage { get; set; }
+        private Page RingPage { get; set; }
+        private Page RingWithBlockPage { get; set; }
+        private Page SilkPage { get; set; }
+        private Page SilkHammokPage { get; set; }
+        private Page CurrentPage { get; set; }
+
+        private Data Data { get; set; }
+
         private AdminButton adminButton;
 
         public Market()
         {
+            Data = new Data();
+            Data.LogData("---------------------------Новая сессия.---------------------------");
             InitializeComponent();
-            BackColor = Color.Black;
             InitPages();
-            adminButton = new AdminButton(ClientSize.Width);
+            InitBackBattons();
+
+            CurrentPage = MainPage;
+            adminButton = new AdminButton(Data, ClientSize.Width);
+
             UpdatePage();
-            Load += ResizeElements;
+            //Load += ResizeElements;
             Resize += ResizeElements;
         }
 
+        void InitBackBattons()
+        {
+            PilonWithStagePage.AddBackBatton(new BackButton(GetChangePageAction(PilonsPage)));
+            PilonPage.AddBackBatton(new BackButton(GetChangePageAction(PilonsPage)));
+            PilonChineesPage.AddBackBatton(new BackButton(GetChangePageAction(PilonsPage)));
+
+            RingPage.AddBackBatton(new BackButton(GetChangePageAction(RingsPage)));
+            RingWithBlockPage.AddBackBatton(new BackButton(GetChangePageAction(RingsPage)));
+
+            SilkPage.AddBackBatton(new BackButton(GetChangePageAction(SilksPage)));
+            SilkHammokPage.AddBackBatton(new BackButton(GetChangePageAction(SilksPage)));
+
+            PilonsPage.AddBackBatton(new BackButton(GetChangePageAction(MainPage)));
+            RingsPage.AddBackBatton(new BackButton(GetChangePageAction(MainPage)));
+            SilksPage.AddBackBatton(new BackButton(GetChangePageAction(MainPage)));
+
+        }
+        
         void InitPages()
         {
-            Pages = new[]
-            { 
-                new Page(
-            new[]
+
+            PilonWithStagePage = new Page(new PagePart[]
+                {
+                    new PicturePagePart(Properties.Resources.пилон_на_подиуме, null, ""),
+                    new OrderPagePart(Data,"Пилон на подиуме",
+                        @"Пилон разборный на подиуме\n2 режима- динамика и статика
+Материал - ...
+Цвет - стандартный
+Подиум разборный (6 сегментов)",
+                        new string[] {"Длина", "Диаметр"}),
+                });
+
+            PilonPage = new Page(new PagePart[]
+                {
+                    new PicturePagePart(Properties.Resources.пилон_обычный, null, ""),
+                    new OrderPagePart(Data,"Пилон", "Описание:", new string[] {"ФИО"}),
+                });
+
+            PilonChineesPage = new Page(new PagePart[]
+                {
+                    new PicturePagePart(Properties.Resources.подвесной_пилон, null, ""),
+                    new OrderPagePart(Data,"Подвесной пилон", "Описание:", new string[] {"ФИО"}),
+                });
+
+            RingPage = new Page(new PagePart[]
+                {
+                    new PicturePagePart(Properties.Resources.кольцо_без_перекладины, null, ""),
+                    new OrderPagePart(Data,"Кольцо", "Описание:", new string[] {"ФИО"}),
+                });
+
+            RingWithBlockPage = new Page(new PagePart[]
+                {
+                    new PicturePagePart(Properties.Resources.кольцо_с_перекладиной, null, ""),
+                    new OrderPagePart(Data,"Кольцо с перекладиной", "Описание:", new string[] {"ФИО"}),
+                });
+
+            SilkPage = new Page(new PagePart[]
+                {
+                    new PicturePagePart(Properties.Resources.полотна, null, ""),
+                    new OrderPagePart(Data,"Полотна", "Описание:", new string[] {"ФИО"}),
+                });
+
+            SilkHammokPage = new Page(new PagePart[]
+                {
+                    new PicturePagePart(Properties.Resources.гамак, null, ""),
+                    new OrderPagePart(Data,"Гамак", "Описание:", new string[] {"ФИО"}),
+                });
+
+            PilonsPage = new Page(new PagePart[]
                     {
-                        new PicturePagePart(Properties.Resources.пилоны, GoToPageAction(1), "Пилоны"),
-                        new PicturePagePart(Properties.Resources.кольца, GoToPageAction(2), "Кольца"),
-                        new PicturePagePart(Properties.Resources.Полотнаа, GoToPageAction(3), "Полотона")
-                    },
-                    new Label
-                    {
-                        AutoSize = true,
-                        BackColor = System.Drawing.Color.White,
-                        Font = new System.Drawing.Font("Mistral", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204))),
-                        ForeColor = System.Drawing.Color.CadetBlue,
-                        Location = new Point(10,10)
-                        
-                    }
-                ),
-                new Page(
-            new[]
-                    {
-                        new PicturePagePart(Properties.Resources.пилон_на_подиуме, GoToPageAction(4), "На подиуме"),
-                        new PicturePagePart(Properties.Resources.пилон_обычный, GoToPageAction(5), "Классический"),
-                        new PicturePagePart(Properties.Resources.подвесной_пилон, GoToPageAction(6), "Подвесной")
-                    },
-                    backButton: new BackButton(GoToPageAction(0))
-                    
-                ),
-                new Page(
-            new[]
-                    {
-                        new PicturePagePart(Properties.Resources.кольцо_без_перекладины, GoToPageAction(7), "Без перекладины"),
-                        new PicturePagePart(Properties.Resources.кольцо_с_перекладиной, GoToPageAction(8), "С перекладиной"),
-                    },
-                    backButton:  new BackButton(GoToPageAction(0))
-                ),
-                new Page(new[]
-                    {
-                        new PicturePagePart(Properties.Resources.полотна, GoToPageAction(9), "Полотна"),
-                        new PicturePagePart(Properties.Resources.гамак, GoToPageAction(10), "Гамак"),
-                    },
-                    backButton: new BackButton(GoToPageAction(0))
-                ),
-                new Page(
-                new PagePart[]
-                    {
-                        new PicturePagePart(Properties.Resources.пилон_на_подиуме, null, ""),
-                        new OrderPagePart("Пилон на подиуме", "Пилон разборный на подиуме\n2 режима- динамика и статика\nматериал - ...\nцвет - стандартный\nподиум разборный (6 сегментов)", new string[] {"ФИО", "Телефон", "E-mail", "Адрес","Длина", "Диаметр"}), 
-                    },
-                backButton:  new BackButton(GoToPageAction(1))
-                ),
-                new Page(
-                new PagePart[]
-                    {
-                        new PicturePagePart(Properties.Resources.пилон_обычный, null, ""),
-                        new OrderPagePart("Пилон", "Описание:", new string[] {"ФИО"}),
-                    },
-                backButton:  new BackButton(GoToPageAction(1))
-                ),
-                new Page(
-                new PagePart[]
-                    {
-                        new PicturePagePart(Properties.Resources.подвесной_пилон, null, ""),
-                        new OrderPagePart("Подвесной пилон", "Описание:", new string[] {"ФИО"}),
-                    },
-                backButton:  new BackButton(GoToPageAction(1))
-                ),
-                new Page(
-                new PagePart[]
-                    {
-                        new PicturePagePart(Properties.Resources.кольцо_без_перекладины, null, ""),
-                        new OrderPagePart("Кольцо", "Описание:", new string[] {"ФИО"}),
-                    },
-                backButton:  new BackButton(GoToPageAction(2))
-                ),
-                new Page(
-                new PagePart[]
-                    {
-                        new PicturePagePart(Properties.Resources.кольцо_с_перекладиной, null, ""),
-                        new OrderPagePart("Кольцо с перекладиной", "Описание:", new string[] {"ФИО"}),
-                    },
-                backButton:  new BackButton(GoToPageAction(2))
-                ),
-                new Page(
-                    new PagePart[]
-                    {
-                        new PicturePagePart(Properties.Resources.полотна, null, ""),
-                        new OrderPagePart("Полотна", "Описание:", new string[] {"ФИО"}),
-                    },
-                    backButton: new BackButton(GoToPageAction(3))
-                ),
-                new Page(
-                    new PagePart[]
-                    {
-                        new PicturePagePart(Properties.Resources.гамак, null, ""),
-                        new OrderPagePart("Гамак", "Описание:", new string[] {"ФИО"}),
-                    },
-                    backButton:  new BackButton(GoToPageAction(3))
-                )
-            };
+                        new PicturePagePart(Properties.Resources.пилон_на_подиуме, GetChangePageAction(PilonWithStagePage), "На подиуме"),
+                        new PicturePagePart(Properties.Resources.пилон_обычный, GetChangePageAction(PilonPage), "Классический"),
+                        new PicturePagePart(Properties.Resources.подвесной_пилон, GetChangePageAction(PilonChineesPage), "Подвесной")
+                    });
+
+            RingsPage = new Page(new PagePart[]
+                {
+                    new PicturePagePart(Properties.Resources.кольцо_без_перекладины, GetChangePageAction(RingPage), "Без перекладины"),
+                    new PicturePagePart(Properties.Resources.кольцо_с_перекладиной, GetChangePageAction(RingWithBlockPage), "С перекладиной"),
+                });
+
+            SilksPage = new Page(new PagePart[]
+                {
+                    new PicturePagePart(Properties.Resources.полотна, GetChangePageAction(SilkPage), "Полотна"),
+                    new PicturePagePart(Properties.Resources.гамак, GetChangePageAction(SilkHammokPage), "Гамак"),
+                });
+
+            MainPage = new Page(new PagePart[]
+            {
+                new PicturePagePart(Properties.Resources.пилоны, GetChangePageAction(PilonsPage), "Пилоны"),
+                new PicturePagePart(Properties.Resources.кольца, GetChangePageAction(RingsPage), "Кольца"),
+                new PicturePagePart(Properties.Resources.Полотнаа, GetChangePageAction(SilksPage), "Полотона")
+            });
         }
 
         private void UpdatePage()
         {
             Controls.Clear();
             Controls.Add(adminButton.Button);
-            if(Pages[currentPage].BackButton != null)
-                Controls.Add(Pages[currentPage].BackButton.Button);
-            if (Pages[currentPage].MainLabel != null)
-                Controls.Add(Pages[currentPage].MainLabel);
-            foreach (var pagePart in Pages[currentPage].PageParts)
+
+            if(CurrentPage.BackButton != null)
+                Controls.Add(CurrentPage.BackButton.Button);
+
+            if (CurrentPage.MainLabel != null)
+                Controls.Add(CurrentPage.MainLabel);
+
+            foreach (var pagePart in CurrentPage.PageParts)
                 Controls.Add(pagePart.GroupBox);
-            Pages[currentPage].Resize(ClientSize.Width, ClientSize.Height);
+            CurrentPage.Resize(ClientSize.Width, ClientSize.Height);
         }
 
-        private Action<object, EventArgs> GoToPageAction(int page)
+        private Action<object, EventArgs> GetChangePageAction(Page page)
         {
-            return (x, y) =>
             {
-                currentPage = page;
-                UpdatePage();
-            };
+                return (x, y) =>
+                {
+                    CurrentPage = page;
+
+                    Data.LogData("Страница изменена");
+                    UpdatePage();
+                };
+            }
         }
 
         private void ResizeElements(object sender, EventArgs e)
         {
-            Pages[currentPage].Resize(ClientSize.Width, ClientSize.Height);
+            CurrentPage.Resize(ClientSize.Width, ClientSize.Height);
         }
     }
 }

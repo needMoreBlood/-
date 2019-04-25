@@ -12,15 +12,17 @@ namespace Interfaces
 {
     public partial class Login : Form
     {
-        public Login()
+        private Data Data { get; }
+
+        public Login(Data data)
         {
+            Data = data;
             InitializeComponent();
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             PasswordBox.PasswordChar = '•';
             CancelButton.Click += (x, y) => { Close();};
             AcceptButton.Click += EnterAction;
-            PasswordBox.Enter += EnterAction;
         }
         void EnterAction(object x, EventArgs y)
         {
@@ -31,14 +33,15 @@ namespace Interfaces
         {
             if (login == "admin" && password == "password")
             {
-                var adminForm = new AdminForm();
-                adminForm.Show();
-                adminForm.TopMost = true;
+                var adminForm = new AdminForm(Data);
+                Data.LogData("Вход в режим администратора.");
+                adminForm.ShowDialog();
                 Close();
             }
             else
             {
                 MessageBox.Show("Неверный логин или пароль.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Data.LogData("Неудачная попытка входа.");
             }
         }
     }
