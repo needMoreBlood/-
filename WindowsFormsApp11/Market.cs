@@ -70,47 +70,59 @@ namespace Interfaces
                 {
                     new PicturePagePart(Properties.Resources.пилон_на_подиуме, null, ""),
                     new OrderPagePart(Data,"Пилон на подиуме",
-                        @"Пилон разборный на подиуме\n2 режима- динамика и статика
-Материал - ...
+                        @"Пилон разборный на подиуме
+2 режима- динамика и статика
 Цвет - стандартный
 Подиум разборный (6 сегментов)",
-                        new string[] {"Длина", "Диаметр"}),
+                        new string[] {"Высота", "Диаметр"}),
                 });
 
             PilonPage = new Page(new PagePart[]
                 {
                     new PicturePagePart(Properties.Resources.пилон_обычный, null, ""),
-                    new OrderPagePart(Data,"Пилон", "Описание:", new string[] {"ФИО"}),
+                    new OrderPagePart(Data,"Пилон",
+                        @"Быстросъемный пилон без стыков с функцией вращения и статики. Сделан из нержавеющей стали, ударостойкий и негнущийся. Высота – до 5м.",
+                        new string[] {"Высота", "Диаметр"})
                 });
 
             PilonChineesPage = new Page(new PagePart[]
                 {
                     new PicturePagePart(Properties.Resources.подвесной_пилон, null, ""),
-                    new OrderPagePart(Data,"Подвесной пилон", "Описание:", new string[] {"ФИО"}),
+                    new OrderPagePart(Data,"Подвесной пилон",
+                        @"Пилон подвесной, разборный свободновисящий. Сделан из нержавеющей стали, покрытой нескользящим материалом.",
+                        new string[] {"Высота", "Диаметр"})
                 });
 
             RingPage = new Page(new PagePart[]
                 {
                     new PicturePagePart(Properties.Resources.кольцо_без_перекладины, null, ""),
-                    new OrderPagePart(Data,"Кольцо", "Описание:", new string[] {"ФИО"}),
+                    new OrderPagePart(Data,"Кольцо",
+                        "Профессиональное кольцо для воздушной акробатики, сделанное толстостенной бесшовной стали с полимерным покрытием. Диаметр кольца 28мм. Возможно изготовление колец любого цвета.",
+                        new string[] {"Даметр", "Цвет"}),
                 });
 
             RingWithBlockPage = new Page(new PagePart[]
                 {
                     new PicturePagePart(Properties.Resources.кольцо_с_перекладиной, null, ""),
-                    new OrderPagePart(Data,"Кольцо с перекладиной", "Описание:", new string[] {"ФИО"}),
+                    new OrderPagePart(Data,"Кольцо с перекладиной",
+                        "Профессиональное кольцо для воздушной акробатики с перекладиной, сделанное толстостенной бесшовной стали с полимерным покрытием. Диаметр кольца 28мм. Возможно изготовление колец любого цвета.",
+                        new string[] {"Даметр", "Цвет"}),
                 });
 
             SilkPage = new Page(new PagePart[]
                 {
                     new PicturePagePart(Properties.Resources.полотна, null, ""),
-                    new OrderPagePart(Data,"Полотна", "Описание:", new string[] {"ФИО"}),
+                    new OrderPagePart(Data,"Полотна",
+                        "Полотна для воздушной акробатики сделаны из нейлона и хлопка (нейлон — 50%, хлопок — 50%). В комплект входит: 1карабин, 1 полотно.",
+                        new string[] {"Ширина","Длина", "Цвет"}),
                 });
 
             SilkHammokPage = new Page(new PagePart[]
                 {
                     new PicturePagePart(Properties.Resources.гамак, null, ""),
-                    new OrderPagePart(Data,"Гамак", "Описание:", new string[] {"ФИО"}),
+                    new OrderPagePart(Data,"Гамак",
+                        "Гамак для воздушной акробатики сделан из нейлона и хлопка (нейлон — 50%, хлопок — 50%). В комплект входит: 2 крепления, 2 подвеса, 2 карабина, 1 полотно.",
+                        new string[] {"Ширина","Длина", "Цвет"}),
                 });
 
             PilonsPage = new Page(new PagePart[]

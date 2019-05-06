@@ -10,6 +10,7 @@ namespace Interfaces
     public class Data
     {
         public List<Order> Orders { get; private set; }
+        public  List<User> Users { get; }
 
         private static string logFile = "Logs.txt";
         private static string orderFile = "Orders.txt";
@@ -17,6 +18,7 @@ namespace Interfaces
         public Data()
         {
             Orders = new List<Order>();
+            Users = new List<User>();
             var fileStream = new FileStream(orderFile, FileMode.Open, FileAccess.Read);
             using (var streamReader = new StreamReader(fileStream, Encoding.Default))
             {
@@ -35,6 +37,11 @@ namespace Interfaces
             {
                 sw.WriteLine(order);
             }
+        }
+
+        public void AddUser(User user)
+        {
+            Users.Add(user);
         }
 
         public static void LogData(string data)

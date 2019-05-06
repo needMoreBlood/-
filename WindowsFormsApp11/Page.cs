@@ -46,6 +46,9 @@ namespace Interfaces
                     case OrderPagePart orderPart:
                         orderPart.Resize(orderPart.GroupBox.Width, orderPart.GroupBox.Height);
                         break;
+                    case RegistrationPagePart registrationPagePart:
+                        registrationPagePart.Resize(registrationPagePart.GroupBox.Width, registrationPagePart.GroupBox.Height);
+                        break;
                 }
             }
             var lastPart = PageParts[PageParts.Length - 1];
@@ -59,6 +62,9 @@ namespace Interfaces
                     break;
                 case OrderPagePart orderPart1:
                     orderPart1.Resize(orderPart1.GroupBox.Width, orderPart1.GroupBox.Height);
+                    break;
+                case RegistrationPagePart registrationPagePart:
+                    registrationPagePart.Resize(registrationPagePart.GroupBox.Width, registrationPagePart.GroupBox.Height);
                     break;
             }
         }

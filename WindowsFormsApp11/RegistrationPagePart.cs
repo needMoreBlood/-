@@ -8,35 +8,26 @@ using System.Windows.Forms;
 
 namespace Interfaces
 {
-    public class OrderPagePart : PagePart
+    class RegistrationPagePart : PagePart
     {
         public Label TitleLabel { get; set; }
-        public Label DiscriptionLabel { get; set; }
         public PictureBox OkButton { get; set; }
         public DataField[] DataFields { get; set; }
 
-        private readonly string[] standartFields = {"ФИО", "Адресс", "Телефон", "E-mail"};
+        private readonly string[] standartFields = { "ФИО", "Адресс", "Телефон", "E-mail" };
 
-        public OrderPagePart(Data data, string title, string discription, string[] fields)
+        public RegistrationPagePart(Data data)
         {
             GroupBox = new GroupBox();
 
             TitleLabel = new Label
             {
                 AutoSize = true,
-                Text = title,
-                Font = new Font("Minion Pro", 20F, FontStyle.Regular, GraphicsUnit.Point, ((byte) (204))),
+                Text = "Регистрация",
+                Font = new Font("Minion Pro", 20F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(204))),
                 ForeColor = Color.CadetBlue,
                 BackColor = Color.White,
                 Anchor = AnchorStyles.Top | AnchorStyles.Left
-            };
-            DiscriptionLabel = new Label
-            {
-                Text = discription,
-                AutoSize = true,
-                Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point, ((byte) (204))),
-                ForeColor = Color.FromArgb(100, 100, 100),
-                BackColor = Color.White
             };
             var pictureBox = new PictureBox
             {
@@ -46,20 +37,14 @@ namespace Interfaces
                 Size = new Size(10000, 10000),
                 Location = new Point(-5, -5)
             };
-            DataFields = new DataField[fields.Length + standartFields.Length];
+
+            DataFields = new DataField[4];
 
             for (var i = 0; i < standartFields.Length; i++)
             {
                 DataFields[i] = new DataField(standartFields[i]);
                 GroupBox.Controls.Add(DataFields[i].Label);
                 GroupBox.Controls.Add(DataFields[i].TextBox);
-            }
-
-            for (var i = 0; i < fields.Length; i++)
-            {
-                DataFields[i + standartFields.Length] = new DataField(fields[i]);
-                GroupBox.Controls.Add(DataFields[i + standartFields.Length].Label);
-                GroupBox.Controls.Add(DataFields[i + standartFields.Length].TextBox);
             }
 
             OkButton = new PictureBox
@@ -73,32 +58,49 @@ namespace Interfaces
 
             OkButton.Click += (sender, args) =>
             {
-                var order = new Order(title, DataFields.Select(x => x.Data).Select(x => x.Replace('/', '\\')));
-                data.AddOrder(order);
-                var sacces = new SuccesForm("Закказ оформлен.");
-                sacces.ShowDialog();
-                foreach (var dataField in DataFields)
+                if (Check())
                 {
-                    dataField.TextBox.Text = "";
+                    var user = new User(DataFields[0].TextBox.Text,
+                        DataFields[1].TextBox.Text,
+                        DataFields[2].TextBox.Text,
+                        DataFields[3].TextBox.Text);
+                    data.AddUser(user);
+                    var succ = new SuccesForm("Регистрация прошла успешно.");
+                    succ.ShowDialog();
+                    //TODO Окно успеха
+                    foreach (var dataField in DataFields)
+                    {
+                        dataField.TextBox.Text = "";
+                    }
+                    Data.LogData("Регистрация: " + user);
                 }
-                Data.LogData("Заказ: " + order);
+                var error = new SuccesForm("Не все поля запонены.");
+                error.ShowDialog();
+                //TODO Окно неудачи.
             };
             GroupBox.Controls.Add(TitleLabel);
-
-            GroupBox.Controls.Add(DiscriptionLabel);
+            
             GroupBox.Controls.Add(OkButton);
             GroupBox.Controls.Add(pictureBox);
+        }
+
+        private bool Check()
+        {
+            foreach (var dataField in DataFields)
+            {
+                if (dataField.TextBox.Text.Length == 0)
+                    return false;
+            }
+            return true;
         }
 
         public void Resize(int width, int height)
         {
             var border = 30;
 
-            TitleLabel.Location = new Point(20, 20);
-            DiscriptionLabel.Location = new Point(23, 40 + TitleLabel.Height);
-            DiscriptionLabel.MaximumSize = new Size(width - 43, 0);
+            TitleLabel.Location = new Point(50, 20);
 
-            var dataStartHeight = DiscriptionLabel.Location.Y + DiscriptionLabel.Height + 20;
+            var dataStartHeight = 40 + TitleLabel.Height;
 
             for (var i = 0; i < 2; i++)
             {
@@ -110,7 +112,7 @@ namespace Interfaces
                 dataStartHeight += DataFields[0].TextBox.Height + 7;
             }
 
-            var textBoxWidth = width / 2 - (int) (border * 1.5);
+            var textBoxWidth = width / 2 - (int)(border * 1.5);
 
             for (var i = 2; i < DataFields.Length; i++)
             {

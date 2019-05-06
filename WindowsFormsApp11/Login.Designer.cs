@@ -1,6 +1,6 @@
 ﻿namespace Interfaces
 {
-    partial class Login
+    partial class LoginDialog
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginDialog));
             this.LoginBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -104,7 +104,7 @@
             this.Controls.Add(this.LoginBox);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.AcceptButton);
-            this.Name = "Login";
+            this.Name = "LoginDialog";
             this.Text = "Login";
             ((System.ComponentModel.ISupportInitialize)(this.CancelButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AcceptButton)).EndInit();

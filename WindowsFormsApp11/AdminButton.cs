@@ -27,8 +27,11 @@ namespace Interfaces
             Button.Click += (x, y) =>
             {
                 Data.LogData("Открыто окно администратора.");
-                var adminForm = new Login(data);
+                var adminForm = new LoginDialog(data);
                 adminForm.ShowDialog();
+                //TODO
+                var reg = new RegistrationForm(data);
+                reg.ShowDialog();
             };
         }
     }

@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace Interfaces
 {
-    public partial class Login : Form
+    public partial class LoginDialog : Form
     {
         private Data Data { get; }
 
-        public Login(Data data)
+        public LoginDialog(Data data)
         {
             Data = data;
             InitializeComponent();
